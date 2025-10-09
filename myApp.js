@@ -17,6 +17,9 @@ app.use(helmet.xssFilter());
 app.use(helmet.noSniff());
 //prevent IE users from executing downloads in the trusted site's context.
 app.use(helmet.ieNoOpen());
+//asks Browsers to Access via HTTPS Only
+const ninetyDaysInSeconds = 90 * 24 * 60 * 60;
+app.use(helmet.hsts({ maxAge: ninetyDaysInSeconds, force: true }));
 app.use(express.static("public"));
 app.disable("strict-transport-security");
 app.use("/_api", api);
