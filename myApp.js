@@ -13,6 +13,8 @@ app.use(
 );
 //sanitize input sent to the server
 app.use(helmet.xssFilter());
+//set X-Content-Type-Options header to nosniff
+app.use(helmet.noSniff());
 app.use(express.static("public"));
 app.disable("strict-transport-security");
 app.use("/_api", api);
