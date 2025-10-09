@@ -11,6 +11,8 @@ app.use(
     action: "deny",
   })
 );
+//sanitize input sent to the server
+app.use(helmet.xssFilter());
 app.use(express.static("public"));
 app.disable("strict-transport-security");
 app.use("/_api", api);
