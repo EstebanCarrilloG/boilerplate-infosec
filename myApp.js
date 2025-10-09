@@ -22,6 +22,8 @@ const ninetyDaysInSeconds = 90 * 24 * 60 * 60;
 app.use(helmet.hsts({ maxAge: ninetyDaysInSeconds, force: true }));
 //Sets "X-DNS-Prefetch-Control: off"
 app.use(helmet.dnsPrefetchControl());
+//disable client-side caching.
+app.use(helmet.noCache());
 app.use(express.static("public"));
 app.disable("strict-transport-security");
 app.use("/_api", api);
