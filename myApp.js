@@ -15,6 +15,8 @@ app.use(
 app.use(helmet.xssFilter());
 //set X-Content-Type-Options header to nosniff
 app.use(helmet.noSniff());
+//prevent IE users from executing downloads in the trusted site's context.
+app.use(helmet.ieNoOpen());
 app.use(express.static("public"));
 app.disable("strict-transport-security");
 app.use("/_api", api);
