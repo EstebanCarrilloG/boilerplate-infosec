@@ -20,6 +20,8 @@ app.use(helmet.ieNoOpen());
 //asks Browsers to Access via HTTPS Only
 const ninetyDaysInSeconds = 90 * 24 * 60 * 60;
 app.use(helmet.hsts({ maxAge: ninetyDaysInSeconds, force: true }));
+//Sets "X-DNS-Prefetch-Control: off"
+app.use(helmet.dnsPrefetchControl());
 app.use(express.static("public"));
 app.disable("strict-transport-security");
 app.use("/_api", api);
