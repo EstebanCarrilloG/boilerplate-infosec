@@ -24,6 +24,8 @@ app.use(helmet.hsts({ maxAge: ninetyDaysInSeconds, force: true }));
 app.use(helmet.dnsPrefetchControl());
 //disable client-side caching.
 app.use(helmet.noCache());
+//
+app.use(helmet.contentSecurityPolicy({directives:{ defaultSrc: ["'self'"], scriptSrc:["'self'",'trusted-cdn.com']}}))
 app.use(express.static("public"));
 app.disable("strict-transport-security");
 app.use("/_api", api);
